@@ -17,7 +17,7 @@ def get_response_data(query_name):
     if itemNumber < 0 or itemNumber >= len(dataItems):
         return None
     logging.debug('[+] Pulling data for payload number '+str(itemNumber)+'/'+str(len(dataItems)-1))
-    return re.sub('\s+',' ',dataItems[itemNumber-args.startValue])
+    return re.sub('\s+',' ',dataItems[itemNumber])
 
 def chunks(l, n):
     '''Split string l into n sized chunks'''
