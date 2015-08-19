@@ -10,7 +10,7 @@ On the server hosting the file (tested with python2):
 
 On the Windows client with batch script:
 
-**client\client_batch\runme.bat <payloadserver> <fileparts> <public dns server>**
+** client\client_batch\runme.bat _payloadserver_ _fileparts_ _public dns server_ **
 
 Example: *client\client_batch\runme.bat payloadserver.yourdomain.com 42 8.8.8.8*
 
