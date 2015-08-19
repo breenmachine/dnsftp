@@ -98,7 +98,7 @@ if __name__ == '__main__':
     else:
         logging.basicConfig(level=logging.DEBUG)
 
-
+    logging.debug('[+] There are '+str(len(dataItems)-1)+' parts to this file')
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
     s.bind(('', 53))
