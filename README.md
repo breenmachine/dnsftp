@@ -19,10 +19,7 @@ If just testing internally, you can use the following example:
 **client\client_batch\runme.bat _payloadserverhostname_  _fileparts_  _payloadserverIPaddr_**
 
 Original author:
-
-http://breenmachine.blogspot.com/2014/09/transfer-file-over-dns-in-windows-with.html
-
-https://github.com/breenmachine/dnsftp
+Stephen Breen - https://github.com/breenmachine/dnsftp
 
 Forked and modified by:
 Daniel Vinakovsky
