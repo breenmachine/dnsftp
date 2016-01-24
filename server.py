@@ -16,7 +16,8 @@ def get_response_data(query_name):
     itemNumber=int(query_name[0:str(query_name).find('.')])-args.startValue
     if itemNumber < 0 or itemNumber >= len(dataItems):
         return None
-    logging.debug('[+] Pulling data for payload number '+str(itemNumber)+'/'+str(len(dataItems)-1))
+    else:
+        logging.debug('[+] Pulling data for payload number '+str(itemNumber)+'/'+str(len(dataItems)-1))
     return re.sub('\s+',' ',dataItems[itemNumber])
 
 def chunks(l, n):
@@ -65,7 +66,7 @@ def requestHandler(address, message):
     if op == 0:
         # standard and inverse query
         qs = msg.question
-        if len(qs) > 0:
+        if len(qs) > 0 and "IN PTR" not in str(qs[0]):
             q = qs[0]
             logging.debug('[+] DNS request is: ' + str(q))
             handle_query(msg,address)
@@ -98,7 +99,7 @@ if __name__ == '__main__':
     else:
         logging.basicConfig(level=logging.DEBUG)
 
-
+    logging.debug('[+] There are '+str(len(dataItems)-1)+' parts to this file')
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
     s.bind(('', 53))
